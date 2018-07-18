@@ -2,6 +2,8 @@
 
 import React, { Component } from 'react';
 
+const config = require('../../config.json');
+
 class Entry extends Component {
 	skycons = null;
 
@@ -38,7 +40,7 @@ class Entry extends Component {
 	componentWillMount() {
 		const { entry } = this.props;
 
-		fetch(`http://localhost:9876/${entry.latlng},${entry.datetime}`)
+		fetch(`${config.proxyUrl}/${entry.latlng},${entry.datetime}`)
 			.then(res => res.json())
 			.then(this.onFetch);
 	}
